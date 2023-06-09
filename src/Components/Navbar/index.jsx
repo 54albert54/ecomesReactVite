@@ -1,4 +1,4 @@
-import { ReactComponent as carShop } from "../../icons/carShopping.svg"
+import { ReactComponent as CarShop } from "../../icons/carShopping.svg"
 import { NavLink } from "react-router-dom";
 
 import { useContext } from "react";
@@ -83,8 +83,8 @@ return(
         Sign In
       </NavLink>
     </li>
-    <li>
-      {carShop}🛒 {context.count}
+    <li className=" flex">
+      <CarShop/>   <p> {context.count}</p>  
     </li>
 
   </ul>
