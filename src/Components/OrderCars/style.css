@@ -1,0 +1,51 @@
+.boton{
+  transition: .4s ease;
+cursor: pointer;
+fill:rgb(255, 0, 0);
+border-radius: 50%;
+}
+
+.boton-active:hover{
+  position: relative;
+
+  background: #f0f0f0;
+  box-shadow: 2px 4px 3px 2px #b1afaf;
+}
+.boton--fn{
+  cursor: default;
+  opacity: 20%;
+  fill:none;
+}
+
+.card{
+  border-radius: 10px;
+  margin: 8px;
+  background: #ebe6e6b4;
+  transition: .4s ease;
+}
+
+.card:hover{
+  position: relative;
+  top: -2px;
+
+  background: #f0f0f0;
+  box-shadow: 2px 4px 3px 2px #b1afaf;
+}
+
+.beChecked{
+  right: -5px;
+  transition: .4s ease;
+  position: relative;
+  top: 10px;
+  background: #f0f0f0;
+  opacity: 70%;
+
+}
+
+.boton--cerrar{
+  position: relative;
+  top: -24px;
+  right: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+}

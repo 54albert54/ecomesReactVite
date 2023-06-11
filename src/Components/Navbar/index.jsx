@@ -74,7 +74,7 @@ return(
     <li>
       <NavLink to='/my-orders'
       className={({isActive}) => isActive? activeStyle:undefined} >
-        My orders
+        My orderS
       </NavLink>
     </li>    
     <li>

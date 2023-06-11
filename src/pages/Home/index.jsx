@@ -1,32 +1,48 @@
 
 import { LayOut } from "../../Components/LayOut";
 import { Card } from "../../Components/Card";
-import { useEffect } from "react";
+import { useContext} from "react";
 
-import { useState } from "react";
+
 import { ProductsDetails } from "../../Components/ProductsDetails";
+import { ShoooingCartContext } from "../../contex";
 
 export const Home =()=>{
- const [items, setItems] = useState(null)
+  const context = useContext(ShoooingCartContext)
+ 
+const renderItems = ()=>{
+  if(context.searchByTitle?.length>0){
+if (context.filteredItems.length>0){
+return(
+  context.filteredItems?.map((item)=>{
+    return < Card  key={item.id} data={item}/>
+    }))
+}else{
+return(
+  <div className="alerta flex justify-between items-center mb-3 border rounded-lg p-4 w-80" >No hay!!</div>
+)
 
- useEffect(()=>{
-fetch('https://api.escuelajs.co/api/v1/products')
-.then(response => response.json())
-.then(data => setItems(data))
-
- },[])
+}
+  }else{
+    return(
+      context.items?.map((item)=>{
+      return < Card  key={item.id} data={item}/>
+      })
+    )    
+  }
+}
 
 return(
 <LayOut>
-  hola
+  <div className="flex items-center justify-center relative w-80 mb-4">
+ <h1 className="font-medium text-xl">Home</h1>
+ </div>
+ <input className="rounded-lg border border-black w-80 p-2 mb-4 focus:outline-none"
+  type="text" placeholder="Que quieres encontrar"
+  onChange={(e)=>{context.setSearchByTitle(e.target.value)}} />
   <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+{renderItems()}
 
-  {
-    items?.map((item)=>{
-    
-    return < Card  key={item.id} data={item}/>
-    })
-  }
   </div>
  
   <ProductsDetails/>

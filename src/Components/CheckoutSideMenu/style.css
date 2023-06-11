@@ -1,0 +1,15 @@
+.checkout-side-menu{
+  width: 360px;
+  height:calc( 100vh - 68px);
+  top: 68px;
+}
+
+.cardShopping{
+  opacity: 80%;
+  transition: .3s ease-in-out;
+ 
+}
+.cardShopping:hover{
+  opacity: 1;
+  box-shadow: -4px 15px 20px 3px #7e7d7d;
+}

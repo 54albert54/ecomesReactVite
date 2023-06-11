@@ -9,6 +9,11 @@ import { MyOrders } from './MyOrders'
 import { NotFound } from './NotFound'
 import { Signin } from './Signin'
 import { Navbar } from '../Components/Navbar'
+import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
+//import { totalPrice } from '../utils/index'
+
+
+
 
 export const AppRoutes =()=>{
   let routes = useRoutes([
@@ -16,6 +21,8 @@ export const AppRoutes =()=>{
     {path:'/my-account',element:<MyAccount/>},
     {path:'/my-order',element:<MyOrder/>},
     {path:'/my-orders',element:<MyOrders/>},
+    {path:'/my-orders/last',element:<MyOrder/>},
+    {path:'/my-orders/:id',element:<MyOrder/>},
     {path:'/*',element:<NotFound/>},
     {path:'/sign-in',element:<Signin/>},
   ])
@@ -31,11 +38,14 @@ function App() {
 
   return (
     <ShoppingCardProvider>
+      
       <BrowserRouter>
         <AppRoutes/>  
         <Navbar/>
+        <CheckoutSideMenu/>
       </BrowserRouter>
     </ShoppingCardProvider>
+    
  
   )
 }
