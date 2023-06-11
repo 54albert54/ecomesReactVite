@@ -11,7 +11,7 @@ export const Home =()=>{
   const context = useContext(ShoooingCartContext)
  
 const renderItems = ()=>{
-  if(context.searchByTitle?.length>0){
+
 if (context.filteredItems?.length>0){
 return(
   context.filteredItems?.map((item)=>{
@@ -23,13 +23,7 @@ return(
 )
 
 }
-  }else{
-    return(
-      context.items?.map((item)=>{
-      return < Card  key={item.id} data={item}/>
-      })
-    )    
-  }
+
 }
 
 return(

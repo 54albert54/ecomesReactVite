@@ -33,14 +33,14 @@ export const ShoppingCardProvider =({children})=>{
   const [items, setItems] = useState(null)
   //los datos filtrados
   const [filteredItems, setFilteredItems] = useState(null)
-  
+
   
   // get items by title
   const [searchByTitle , setSearchByTitle]= useState(null)
  
   //Categry
   const [searcedByCategori , setSearcedByCategori]= useState(null)
-  console.log(" searcedByCategori : ",searcedByCategori)
+ 
   
  
 
@@ -61,7 +61,7 @@ return  items?.filter(item =>item.title.toLowerCase().includes(searchByTitle.toL
 }
 
 const filteredByCategori = (items,searcedByCategori)=>{
-  let result = items?.filter(item =>item.category.name == searcedByCategori)
+  let result = items?.filter(item =>item.category.name.toLowerCase().includes(searcedByCategori.toLowerCase()))
   
   
   return  result
@@ -69,42 +69,32 @@ const filteredByCategori = (items,searcedByCategori)=>{
   }
   
 
-  const   filterBy = (searchType,items ,searchByTitle,searcedByCategori)=>{
-   console.log("items :",items)
-    
-    if (searchType === 'By_TITLE_AND_CATEGORY'){
-      return filteredByCategori(items , searcedByCategori).filter(item =>item.category.name.toLowerCase() === searcedByCategori.toLowerCase())
+  const filterBy = (searchType, items, searchByTitle, searcedByCategori) => {
+    if (searchType === 'BY_TITLE') {
+      return filteredByTitle(items, searchByTitle)
     }
-    if (searchType === 'By_TITLE'){
-      return filteredByTitle(items , searchByTitle)
+
+    if (searchType === 'BY_CATEGORY') {
+      return filteredByCategori(items, searcedByCategori)
     }
-    if (searchType === 'By_CATEGORY'){
-      return filteredByCategori(items , searcedByCategori)
+
+    if (searchType === 'BY_TITLE_AND_CATEGORY') {
+      return filteredByCategori(items, searcedByCategori).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
     }
-    if (!searchType ){
-      return items 
+
+    if (!searchType) {
+      return items
     }
-   
-   
-  
   }
- 
-  console.log("filteredItems: ", filteredItems)
-useEffect(()=>{
 
- 
-  if (searchByTitle && searcedByCategori)setFilteredItems(filterBy('By_TITLE_AND_CATEGORY',items ,searchByTitle)),console.log("items- ambos: ",items)
-  if (searchByTitle && !searcedByCategori)setFilteredItems(filterBy('By_TITLE',items ,searchByTitle)),console.log("items- titulo: ",items)
-  if (!searchByTitle && searcedByCategori)setFilteredItems(filterBy('By_CATEGORY',items ,searcedByCategori)),console.log("items- hooks: ",items)
-  if (!searchByTitle && !searcedByCategori)setFilteredItems(filterBy(null,items ,searcedByCategori)),console.log("nadie",items)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-},[items , searchByTitle,searcedByCategori])
+  useEffect(() => {
+    if (searchByTitle && searcedByCategori) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searcedByCategori))
+    if (searchByTitle && !searcedByCategori) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle,searcedByCategori))
+    if (!searchByTitle && searcedByCategori) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searcedByCategori))
+    if (!searchByTitle && !searcedByCategori) setFilteredItems(filterBy(null, items, searchByTitle, searcedByCategori))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items,searchByTitle,searcedByCategori])
 
-
-// const filteredByCategori = ()=>{
-//   const result =  items?.filter(item =>item.category.name ==="Clothes")
-//   setItemsByCategory(result)
-//   }
 
   
 

@@ -27,7 +27,7 @@ return(
         Mi Real Tienda
       </NavLink>
     </li>
-    <li onClick={()=>{ context.setSearcedByCategori("All"), context.setUbicacion("All")}} >
+    <li onClick={()=>{ context.setSearcedByCategori(null), context.setUbicacion("All")}} >
       <NavLink to='/all'
       className={({isActive}) => isActive? activeStyle:undefined} >
         All
@@ -77,7 +77,7 @@ return(
     <li>
       <NavLink to='/my-orders'
       className={({isActive}) => isActive? activeStyle:undefined} >
-        My orderS
+        My order
       </NavLink>
     </li>    
     <li>
@@ -87,7 +87,7 @@ return(
       </NavLink>
     </li>
     <li className=" flex">
-      <CarShop/>   <p> {context.count}</p>  
+      <CarShop/>   <p> {context.cartProducts.length}</p>  
     </li>
 
   </ul>
