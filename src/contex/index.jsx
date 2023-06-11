@@ -34,8 +34,19 @@ export const ShoppingCardProvider =({children})=>{
   //los datos filtrados
   const [filteredItems, setFilteredItems] = useState(null)
   
+  
   // get items by title
   const [searchByTitle , setSearchByTitle]= useState(null)
+ 
+  //Categry
+  const [searcedByCategori , setSearcedByCategori]= useState(null)
+  console.log(" searcedByCategori : ",searcedByCategori)
+  
+ 
+
+  // cabezera de pagina
+  const [ubicacion , setUbicacion] =useState('Mi Real tienda ')
+  
 
 
   useEffect(()=>{
@@ -48,10 +59,54 @@ export const ShoppingCardProvider =({children})=>{
 const filteredByTitle = (items , searchByTitle)=>{
 return  items?.filter(item =>item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
 }
-useEffect(()=>{
-  if (searchByTitle)setFilteredItems(filteredByTitle(items , searchByTitle))
-},[items , searchByTitle])
 
+const filteredByCategori = (items,searcedByCategori)=>{
+  let result = items?.filter(item =>item.category.name == searcedByCategori)
+  
+  
+  return  result
+  
+  }
+  
+
+  const   filterBy = (searchType,items ,searchByTitle,searcedByCategori)=>{
+   console.log("items :",items)
+    
+    if (searchType === 'By_TITLE_AND_CATEGORY'){
+      return filteredByCategori(items , searcedByCategori).filter(item =>item.category.name.toLowerCase() === searcedByCategori.toLowerCase())
+    }
+    if (searchType === 'By_TITLE'){
+      return filteredByTitle(items , searchByTitle)
+    }
+    if (searchType === 'By_CATEGORY'){
+      return filteredByCategori(items , searcedByCategori)
+    }
+    if (!searchType ){
+      return items 
+    }
+   
+   
+  
+  }
+ 
+  console.log("filteredItems: ", filteredItems)
+useEffect(()=>{
+
+ 
+  if (searchByTitle && searcedByCategori)setFilteredItems(filterBy('By_TITLE_AND_CATEGORY',items ,searchByTitle)),console.log("items- ambos: ",items)
+  if (searchByTitle && !searcedByCategori)setFilteredItems(filterBy('By_TITLE',items ,searchByTitle)),console.log("items- titulo: ",items)
+  if (!searchByTitle && searcedByCategori)setFilteredItems(filterBy('By_CATEGORY',items ,searcedByCategori)),console.log("items- hooks: ",items)
+  if (!searchByTitle && !searcedByCategori)setFilteredItems(filterBy(null,items ,searcedByCategori)),console.log("nadie",items)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+},[items , searchByTitle,searcedByCategori])
+
+
+// const filteredByCategori = ()=>{
+//   const result =  items?.filter(item =>item.category.name ==="Clothes")
+//   setItemsByCategory(result)
+//   }
+
+  
 
 
 return(
@@ -75,11 +130,16 @@ return(
     searchByTitle, 
     setSearchByTitle,
     filteredItems,
-    setFilteredItems
+    setFilteredItems,
+    searcedByCategori,
+    setSearcedByCategori,
+    filteredByCategori,
+    ubicacion,
+    setUbicacion
     
 
     }}>
     {children}
   </ShoooingCartContext.Provider>
 )
-};
+}

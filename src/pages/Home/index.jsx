@@ -12,7 +12,7 @@ export const Home =()=>{
  
 const renderItems = ()=>{
   if(context.searchByTitle?.length>0){
-if (context.filteredItems.length>0){
+if (context.filteredItems?.length>0){
 return(
   context.filteredItems?.map((item)=>{
     return < Card  key={item.id} data={item}/>
@@ -35,7 +35,7 @@ return(
 return(
 <LayOut>
   <div className="flex items-center justify-center relative w-80 mb-4">
- <h1 className="font-medium text-xl">Home</h1>
+ <h1 className="font-medium text-xl">{context.ubicacion}</h1>
  </div>
  <input className="rounded-lg border border-black w-80 p-2 mb-4 focus:outline-none"
   type="text" placeholder="Que quieres encontrar"

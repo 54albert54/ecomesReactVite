@@ -10,6 +10,7 @@ import { NotFound } from './NotFound'
 import { Signin } from './Signin'
 import { Navbar } from '../Components/Navbar'
 import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
+
 //import { totalPrice } from '../utils/index'
 
 
@@ -18,6 +19,12 @@ import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
 export const AppRoutes =()=>{
   let routes = useRoutes([
     {path:'/',element:<Home/>},
+    {path:'/All',element:<Home/>},
+    {path:'/Clothes',element:<Home/>},
+    {path:'/electronic',element:<Home/>},
+    {path:'/furniture',element:<Home/>},
+    {path:'/toys',element:<Home/>},
+    {path:'/other',element:<Home/>},
     {path:'/my-account',element:<MyAccount/>},
     {path:'/my-order',element:<MyOrder/>},
     {path:'/my-orders',element:<MyOrders/>},
@@ -25,6 +32,8 @@ export const AppRoutes =()=>{
     {path:'/my-orders/:id',element:<MyOrder/>},
     {path:'/*',element:<NotFound/>},
     {path:'/sign-in',element:<Signin/>},
+   
+    
   ])
 return(
 routes

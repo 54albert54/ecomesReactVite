@@ -15,46 +15,49 @@ let activeStyle= "underline underline-offset-4"
   //   textDecoration:'underline'
   // }
 return(
+
 <nav className="bg-white flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
   <ul className="flex items-center gap-3 ">
-    <li className="font-semibold text-lg" >
+    <li
+    
+     className="font-semibold text-lg" >
       <NavLink to='/' 
       className={({isActive}) => isActive? activeStyle:undefined}
       >
         Mi Real Tienda
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("All"), context.setUbicacion("All")}} >
       <NavLink to='/all'
       className={({isActive}) => isActive? activeStyle:undefined} >
         All
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("Clothes"), context.setUbicacion("Clothes")}}>
       <NavLink to='/clothes'
       className={({isActive}) => isActive? activeStyle:undefined} >
         Clothes
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("Electronic"), context.setUbicacion("Electronic")}} >
       <NavLink to='/electronic'
       className={({isActive}) => isActive? activeStyle:undefined} >
         Electronic
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("Furniture"), context.setUbicacion("Furniture")}} >
       <NavLink to='/furniture'
       className={({isActive}) => isActive? activeStyle:undefined} >
         Furnitures
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("Toys"), context.setUbicacion("Toys")}} >
       <NavLink to='/toys'
       className={({isActive}) => isActive? activeStyle:undefined} >
         Toys
       </NavLink>
     </li>
-    <li>
+    <li onClick={()=>{ context.setSearcedByCategori("Other"), context.setUbicacion("Other")}} >
       <NavLink to='/other'
       className={({isActive}) => isActive? activeStyle:undefined} >
         Other
