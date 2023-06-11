@@ -7,3 +7,5 @@ products.forEach(product=> { sum +=product.price
 })
   return sum
 }
+
+

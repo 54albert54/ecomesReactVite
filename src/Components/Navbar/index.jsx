@@ -19,9 +19,9 @@ return(
 <nav className="bg-white flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
   <ul className="flex items-center gap-3 ">
     <li
-    
+    onClick={()=>{  context.setUbicacion("Mi Real Tienda")}}
      className="font-semibold text-lg" >
-      <NavLink to='/' 
+      <NavLink to='/Mi-React-Tienda' 
       className={({isActive}) => isActive? activeStyle:undefined}
       >
         Mi Real Tienda
@@ -86,7 +86,7 @@ return(
         Sign In
       </NavLink>
     </li>
-    <li className=" flex">
+    <li onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() } className=" flex">
       <CarShop/>   <p> {context.cartProducts.length}</p>  
     </li>
 

@@ -62,7 +62,7 @@ onClick={()=>{showProduct(data.data)}}
     <img className="w-full h-full object-cover rounded-lg" src={data.data.images[0]} alt={data.data.title} />
 {renderIcon(data.data.id)}
   </figure>
-  <p className="flex justify-between">
+  <p className="flex justify-between px-2 ">
     <span className="text-sm font-light" >{data.data.title}</span>
     <span className="text-sm font-medium" >${data.data.price}</span>
   </p>

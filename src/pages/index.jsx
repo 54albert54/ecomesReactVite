@@ -10,6 +10,7 @@ import { NotFound } from './NotFound'
 import { Signin } from './Signin'
 import { Navbar } from '../Components/Navbar'
 import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
+import { Inicio } from './inicio'
 
 //import { totalPrice } from '../utils/index'
 
@@ -19,6 +20,7 @@ import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
 export const AppRoutes =()=>{
   let routes = useRoutes([
     {path:'/',element:<Home/>},
+    {path:'/Mi-React-Tienda',element:<Inicio/>},
     {path:'/All',element:<Home/>},
     {path:'/Clothes',element:<Home/>},
     {path:'/electronic',element:<Home/>},
