@@ -76,7 +76,7 @@ return(
   </ul>
   </div>
 
-  <ul className={`navbar-derecha flex items-center menu ${clase} gap-2`} >
+  <ul className={`navbar-derecha flex items-center menu  gap-2`} >
     <li className="text-black/60" >
      rompreCraneos809
     </li>
