@@ -24,6 +24,7 @@ const addProductsToCard =(event, productDeta)=>{
 context.setCarProducts([...context.cartProducts, productDeta])
 context.openProductSideMenu()
 context.closeProductDetail()
+context.setCheckedIndex(null)
 }
 
 
