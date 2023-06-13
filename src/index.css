@@ -1,3 +1,116 @@
+.boton--menu{
+  display: none;
+}
+.menu{
+  display: none;
+}
 
+.venta{
+  display: grid;
+  gap: 4;
+  grid-template-columns: auto auto auto auto;
+  width: 100%;
+  
+
+}
+.contenedor_botoncito{
+ 
+  margin: 20px 23px 10px 23px;
+  display: flex;
+  justify-content: space-between;
+}
+.botoncito{
+  
+  border-radius: 10px;
+  background: #949292;
+  width: 100px;
+  height: 20px;
+  transition: .4s ease;
+}
+.botoncito:hover{
+  position: relative;
+  top: -1px;
+  box-shadow: 1px 3px 6px 4px #939292 ;
+cursor: pointer;
+background: #e1e0e0;
+}
+
+
+
+/* grid gap-4 grid-cols-4 w-full max-w-screen-lg */
+@media (max-width:391px) {
+  .inputs{
+    position: absolute;
+    top:40px;
+    left: 30px;
+
+  }
+
+  .venta{
+
+    position: absolute;
+    top: 86px;
+    display: grid;
+    gap: 4;
+    padding-left: 60px;
+    grid-template-columns: 150px  ;
+    width: 100%;
+  
+  }
+
+  .boton--menu{
+    display: block;
+  }
+.navbar-izquierda{
+  all: initial;
+  position: fixed;
+  background: rgb(255, 255, 255);
+  
+  padding: 30px 5px 0 0px;
+  left: 0;
+  top:0;
+  width: 63vh;
+  height: 68px;
+  
+}
+
+  .navbar-derecha{
+    position:absolute;
+    display: flex;
+    width: 94%;
+    top: 9px;
+    background: #fff;
+    right:25px;
+    height: 68px;
+    padding-left: 10px;
+  }
+  .contenedor-layOut{
+    position: absolute;
+ top: 20px;
+  }
+
+  .containe--data{
+    all: initial;
+   position:absolute;
+   top: 28px;
+   left: 4px;
+   
+    width: 390px;
+    padding: 0;
+    margin: 0;
+  }
+  .container{
+    all: initial;
+    width: 100%;
+   
+  }
+  .alerta1{
+    all: initial;
+    position: absolute;
+    top: -300;
+    background: #000;
+  }
+  
+}
 
 

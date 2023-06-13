@@ -18,12 +18,12 @@ return(
  <h1 className="font-medium text-xl">{context.ubicacion}</h1>
  </div>
  
-  <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">  </div>
+ 
    
     <div className="container">
     
 <section className="container--data">
-<figure className="container--img">
+<figure className="containe--img">
       <img src="https://d12z45jzadnz51.cloudfront.net/wp-content/uploads/2020/09/Desarrollo-tiendas-online.jpg" alt="foto"  />
     </figure>
 <h1 className="container--data-titulo">Introduccion</h1>
@@ -37,14 +37,11 @@ Nuestro objetivo principal es ofrecerles una amplia gama de productos electróni
 Con React, hemos logrado desarrollar un sistema de filtrado y búsqueda inteligente, lo que les permitirá encontrar fácilmente los productos que desean. Además, hemos incorporado funciones de personalización para adaptarnos a sus preferencias individuales y ofrecer recomendaciones basadas en sus intereses y comportamientos anteriores.
    </p>
 </section>
-<div className="segundaImagen">
-
-</div>
 
 
     </div>
 <footer>
-  <p>Gracias por llegar hasta aqui!!!</p>
+
 </footer>
 
 

@@ -1,13 +1,19 @@
 import { ReactComponent as CarShop } from "../../icons/carShopping.svg"
+import { ReactComponent as HomeIcon } from "../../icons/Home.svg"
+import { ReactComponent as Menu } from "../../icons/menu.svg"
 import { NavLink } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ShoooingCartContext } from "../../contex";
+
+
+
 
 
   
 
 export const Navbar =()=>{
+  const [clase,setClase] = useState("invisible")
   const context =useContext(ShoooingCartContext)
 let activeStyle= "underline underline-offset-4"
 
@@ -17,14 +23,15 @@ let activeStyle= "underline underline-offset-4"
 return(
 
 <nav className="bg-white flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
-  <ul className="flex items-center gap-3 ">
+<div className="navbar-izquierda" >
+  <ul className=" flex items-center gap-3 ">
     <li
     onClick={()=>{  context.setUbicacion("Mi Real Tienda")}}
      className="font-semibold text-lg" >
       <NavLink to='/Mi-React-Tienda' 
       className={({isActive}) => isActive? activeStyle:undefined}
       >
-        Mi Real Tienda
+        <HomeIcon/>
       </NavLink>
     </li>
     <li onClick={()=>{ context.setSearcedByCategori(null), context.setUbicacion("All")}} >
@@ -63,8 +70,13 @@ return(
         Other
       </NavLink>
     </li>
+    <li className="boton--menu" onClick={()=>{clase === "invisible"? setClase(''):setClase('invisible')}}>
+      <Menu/> 
+    </li>
   </ul>
-  <ul className="flex items-center  gap-2" >
+  </div>
+
+  <ul className={`navbar-derecha flex items-center menu ${clase} gap-2`} >
     <li className="text-black/60" >
      rompreCraneos809
     </li>

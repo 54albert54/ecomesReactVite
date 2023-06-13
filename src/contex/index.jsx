@@ -5,7 +5,7 @@ export const ShoooingCartContext = createContext()
 
 export const ShoppingCardProvider =({children})=>{
 
-
+  const [checkedIndex, setCheckedIndex] = useState(null);
 
   //conteo de carrito
   const [count, setCount]= useState(0)
@@ -125,7 +125,9 @@ return(
     setSearcedByCategori,
     filteredByCategori,
     ubicacion,
-    setUbicacion
+    setUbicacion,
+    checkedIndex, 
+    setCheckedIndex
     
 
     }}>
