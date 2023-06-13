@@ -12,7 +12,7 @@ import { Navbar } from '../Components/Navbar'
 import { CheckoutSideMenu } from '../Components/CheckoutSideMenu'
 import { Inicio } from './inicio'
 
-//import { totalPrice } from '../utils/index'
+//import { totalPrice } from '../utils/index'  ecomesReactVite
 
 
 
@@ -20,6 +20,7 @@ import { Inicio } from './inicio'
 export const AppRoutes =()=>{
   let routes = useRoutes([
     {path:'/',element:<Home/>},
+    {path:'/ecomesReactVite',element:<Home/>},
     {path:'/Mi-React-Tienda',element:<Inicio/>},
     {path:'/All',element:<Home/>},
     {path:'/Clothes',element:<Home/>},
