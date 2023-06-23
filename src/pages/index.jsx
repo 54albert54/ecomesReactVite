@@ -3,7 +3,7 @@ import { ShoooingCartContext, ShoppingCardProvider, initializeLocalStorage } fro
 
 import './App.css'
  import { Home } from './Home'
-
+ import { Inicio } from './inicio'
 import { MyOrder } from './MyOrder'
 import { MyOrders } from './MyOrders'
 import { NotFound } from './NotFound'
@@ -32,7 +32,7 @@ export const AppRoutes =()=>{
   const isUserSignOut = context.signOut || parsedSignOut
 
   let routes = useRoutes([
-    {path:'/',element: hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
+    {path:'/',element: hasUserAnAccount && !isUserSignOut?<Inicio/>:<Navigate replace to={'/sign-in'}/>},
     {path:'/ecomesReactVite',element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
     {path:'/Mi-React-Tienda',element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},
     {path:'/All',element:hasUserAnAccount && !isUserSignOut?<Home/>:<Navigate replace to={'/sign-in'}/>},

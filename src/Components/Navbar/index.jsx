@@ -89,7 +89,7 @@ return(
     <li
     onClick={()=>{  context.setUbicacion("Mi Real Tienda")}}
      className="font-semibold text-lg" >
-      <NavLink to='/Mi-React-Tienda' 
+      <NavLink to='/' 
       className={({isActive}) => isActive? activeStyle:undefined}
       >
         <HomeIcon/>
@@ -142,11 +142,6 @@ return(
 <li className="flex items-center" onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() }>
   <ShoooingCart/>
 </li>
-
-    {/* <li onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() } className=" flex">
-      <CarShop/>   <p> {context.cartProducts.length}</p>  
-    </li> */}
-
   </ul>
 </nav>
 )
