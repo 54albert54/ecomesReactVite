@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import { ShoooingCartContext } from "../../contex";
+import { ShoooingCart } from "../ShoppingCart";
 
 
 
@@ -17,9 +18,69 @@ export const Navbar =()=>{
   const context =useContext(ShoooingCartContext)
 let activeStyle= "underline underline-offset-4"
 
-  // let activeStyle={
-  //   textDecoration:'underline'
-  // }
+//Sign Out
+const signOut = localStorage.getItem('sign-out')
+const parsedSignOut = JSON.parse(signOut)
+const isUserSignOut = context.signOut || parsedSignOut
+//Account 
+const account = localStorage.getItem('account')
+const parsedAccount = JSON.parse(account)
+//has an account 
+const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
+const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
+const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
+
+const handleSignOut =()=>{
+  const stringfiedSignOut = JSON.stringify(true)
+  localStorage.setItem('sign-out', stringfiedSignOut)
+  context.setSignOut(true)
+  }
+
+  const renderView = () => {
+    if (hasUserAnAccount && !isUserSignOut) {
+      return (
+        <>
+          <li className='text-black/60'>
+            {parsedAccount?.email}
+          </li>
+          <li>
+            <NavLink
+              to='/my-orders'
+              className={({ isActive }) => isActive ? activeStyle : undefined}>
+              My Orders
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/my-account'
+              className={({ isActive }) => isActive ? activeStyle : undefined}>
+              My Account
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to='/sign-in'
+              className={({ isActive }) => isActive ? activeStyle : undefined}
+              onClick={() => handleSignOut()}>
+              Sign out
+            </NavLink>
+          </li>
+        </>
+      )
+    } else {
+      return (
+        <li>
+          <NavLink
+            to="/sign-in"
+            className={({ isActive }) => isActive ? activeStyle : undefined }
+            onClick={() => handleSignOut()}>
+            Sign in
+          </NavLink>
+        </li>
+      )
+    }
+  }
+
 return(
 
 <nav className="bg-white flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
@@ -77,30 +138,14 @@ return(
   </div>
 
   <ul className={`navbar-derecha flex items-center menu  gap-2`} >
-    <li className="text-black/60" >
-     rompreCraneos809
-    </li>
-    <li>
-      <NavLink to='/my-account'
-      className={({isActive}) => isActive? activeStyle:undefined} >
-        My Account
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to='/my-orders'
-      className={({isActive}) => isActive? activeStyle:undefined} >
-        My order
-      </NavLink>
-    </li>    
-    <li>
-      <NavLink to='/sign-in'
-      className={({isActive}) => isActive? activeStyle:undefined} >
-        Sign In
-      </NavLink>
-    </li>
-    <li onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() } className=" flex">
+  {renderView()}
+<li className="flex items-center" onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() }>
+  <ShoooingCart/>
+</li>
+
+    {/* <li onClick={()=>context.isProductDitailMenuOpen?context.closeProductSideMenu():context.openProductSideMenu() } className=" flex">
       <CarShop/>   <p> {context.cartProducts.length}</p>  
-    </li>
+    </li> */}
 
   </ul>
 </nav>

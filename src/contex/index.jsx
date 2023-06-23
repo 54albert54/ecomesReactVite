@@ -3,7 +3,29 @@ import { createContext, useEffect, useState } from "react";
 
 export const ShoooingCartContext = createContext()
 
+export const initializeLocalStorage = ()=>{
+  const accountInlocalStorage = localStorage.getItem('account')
+  const signOutInlocalStorage = localStorage.getItem('sign-out')
+  let parsedAccount
+  let parsedSignOut
+
+  if (!accountInlocalStorage){
+    localStorage.setItem('account',JSON.stringify({}))
+    parsedAccount ={}
+  }else{
+    parsedAccount = JSON.parse(accountInlocalStorage)
+  }
+  if (!signOutInlocalStorage){
+    localStorage.setItem('sign-out', JSON.stringify(false))
+    parsedSignOut = false
+  }else{
+    parsedSignOut = JSON.parse(signOutInlocalStorage)
+  }
+}
+
 export const ShoppingCardProvider =({children})=>{
+  const [account, setAccount]=useState({})
+  const [signOut , setSignOut]=useState(false)
 
   const [checkedIndex, setCheckedIndex] = useState(null);
 
@@ -127,7 +149,11 @@ return(
     ubicacion,
     setUbicacion,
     checkedIndex, 
-    setCheckedIndex
+    setCheckedIndex,
+    account, 
+    setAccount,
+    signOut, 
+    setSignOut
     
 
     }}>
